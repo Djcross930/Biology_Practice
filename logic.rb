@@ -4,125 +4,68 @@ sequence_array = []
 
 File.open("sequence.txt", "r") do |file|
   x = 0
-  while x < 60
+  while x < 12
+    # if file.readchar() == "Z"
+    #   break
+    # else
     sequence_array << file.readchar()
     x += 1
+    # end
   end
 end
+p sequence_array.class
 p sequence_array
 
-
 index = 0
 while index < sequence_array.length
-  if sequence_array[index] == "a" && sequence_array[index + 1] == "u" && sequence_array[index + 2] == "g"
-    p "start codon at position #{index}"
+  if sequence_array[index] == "A" && sequence_array[index + 1] == "U" && sequence_array[index + 2] == "G"
+    p "Start codon at position #{index}"
     index += 1
   else
     index += 1
   end
 end
 
-
-# index = 0
-
-# while index < sequence_array.length
-#   if sequence_array[index] == "a"
-#     if sequence_array[index + 1] == "u"
-#       if sequence_array[index + 2] == "g"
-#         p "start codon at position #{index}"
-#         index += 1
-#       end
-#     else
-#       index += 1
-#     end
-#   else
-#     index += 1
-#   end
-# end
-
-
 index = 0
+
 while index < sequence_array.length
-  if sequence_array[index] == "u" && sequence_array[index + 1] == "a" && sequence_array[index + 2] == "a"
-    p "stop codon at position #{index}"
+  if (sequence_array[index] == "A" && sequence_array[index + 1] == "U" && sequence_array[index + 2] == "C") || (sequence_array[index] == "A" && sequence_array[index + 1] == "U" && sequence_array[index + 2] == "U")
+    p "Isoleucine codon at position #{index}"
     index += 1
   else
     index += 1
   end
 end
 
-# index = 0
-
-# while index < sequence_array.length
-#   if sequence_array[index] == "u"
-#     if sequence_array[index + 1] == "a"
-#       if sequence_array[index + 2] == "a"
-#         p "stop codon at position #{index}"
-#         index += 1
-#       end
-#     else
-#       index += 1
-#     end
-#   else
-#     index += 1
-#   end
-# end
-
-
-
 index = 0
+
 while index < sequence_array.length
-  if sequence_array[index] == "u" && sequence_array[index + 1] == "a" && sequence_array[index + 2] == "g"
-    p "stop codon at position #{index}"
+  if sequence_array[index] == "U" && sequence_array[index + 1] == "A" && sequence_array[index + 2] == "A"
+    p "Stop codon at position #{index}"
     index += 1
   else
     index += 1
   end
 end
 
-
-# index = 0
-
-# while index < sequence_array.length
-#   if sequence_array[index] == "u"
-#     if sequence_array[index + 1] == "a"
-#       if sequence_array[index + 2] == "g"
-#         p "stop codon at position #{index}"
-#         index += 1
-#       end
-#     else
-#       index += 1
-#     end
-#   else
-#     index += 1
-#   end
-# end
-
-
 index = 0
+
 while index < sequence_array.length
-  if sequence_array[index] == "a" && sequence_array[index + 1] == "g" && sequence_array[index + 2] == "a"
-    p "stop codon at position #{index}"
+  if sequence_array[index] == "U" && sequence_array[index + 1] == "A" && sequence_array[index + 2] == "G"
+    p "Stop codon at position #{index}"
     index += 1
   else
     index += 1
   end
 end
 
+index = 0
 
-# index = 0
-
-# while index < sequence_array.length
-#   if sequence_array[index] == "a"
-#     if sequence_array[index + 1] == "g"
-#       if sequence_array[index + 2] == "a"
-#         p "stop codon at position #{index}"
-#         index += 1
-#       end
-#     else
-#       index += 1
-#     end
-#   else
-#     index += 1
-#   end
-# end
+while index < sequence_array.length
+  if sequence_array[index] == "A" && sequence_array[index + 1] == "G" && sequence_array[index + 2] == "A"
+    p "Stop codon at position #{index}"
+    index += 1
+  else
+    index += 1
+  end
+end
