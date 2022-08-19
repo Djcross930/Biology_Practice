@@ -10,7 +10,7 @@ index = 0
 base_pair_index = 0
 protein = []
 amino_acid_codons = []
-x = 3
+stop_codon = []
 while index < sequence_array.length && switch == 0
   if sequence_array[index] == "A" && sequence_array[index + 1] == "U" && sequence_array[index + 2] == "G"
     p "Start Codon at position #{index}"
@@ -154,6 +154,7 @@ while index < sequence_array.length && switch == 0
       
       elsif (amino_acids[base_pair_index] == "U" && amino_acids[base_pair_index + 1] == "A" && amino_acids[base_pair_index + 2] == "A") || (amino_acids[base_pair_index] == "U" && amino_acids[base_pair_index + 1] == "A" && amino_acids[base_pair_index + 2] == "G") || (amino_acids[base_pair_index] == "U" && amino_acids[base_pair_index + 1] == "G" && amino_acids[base_pair_index + 2] == "A")
         p "Stop codon at position #{amino_acid_index}"
+        stop_codon << amino_acids
         switch = 1
       end
     end
@@ -164,21 +165,24 @@ while index < sequence_array.length && switch == 0
 end
 
 p protein
+amino_acid_codons.unshift(["A", "U", "G"])
+amino_acid_codons.push(stop_codon.flatten)
 p amino_acid_codons
 
 def point_mutation(protein_sequence)
   mutation1 = rand((protein_sequence.length - 1))
   mutation2 = rand(2)
-  x = rand(3)
-  if x == 0
+  randomizer = rand(3)
+  if randomizer == 0
     protein_sequence[mutation1][mutation2] = "A"
-  elsif x == 1
+  elsif randomizer == 1
     protein_sequence[mutation1][mutation2] = "U"
-  elsif x == 2
+  elsif randomizer == 2
     protein_sequence[mutation1][mutation2] = "G"
-  elsif x == 3
+  elsif randomizer == 3
     protein_sequence[mutation1][mutation2] = "C"
   end
   return protein_sequence
 end
-p point_mutation(amino_acid_codons)
+p point_mutation(amino_acid_codons).flatten
+mutated_mrna = point_mutation(amino_acid_codons).flatten
