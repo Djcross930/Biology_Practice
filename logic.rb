@@ -1,3 +1,4 @@
+while
 switch = 0
 
 p "Enter a mature mRNA sequence. Must have start and stop codon, and total bases in between must be divisible by 3. Any amount of base pairs may be present before or after the start/stop codons(to represent the mRNA cap and tail), this will not effect the output."
@@ -146,22 +147,24 @@ end
 p protein
 amino_acid_codons.unshift(["A", "U", "G"])
 amino_acid_codons.push(stop_codon.flatten)
-p amino_acid_codons.flatten
+puts "Original: #{amino_acid_codons.flatten}"
 
 def point_mutation(protein_sequence)
-  mutation1 = rand((protein_sequence.length - 1))
-  mutation2 = rand(2)
-  randomizer = rand(3)
-  if randomizer == 0
-    protein_sequence[mutation1][mutation2] = "A"
-  elsif randomizer == 1
-    protein_sequence[mutation1][mutation2] = "U"
-  elsif randomizer == 2
-    protein_sequence[mutation1][mutation2] = "G"
-  elsif randomizer == 3
-    protein_sequence[mutation1][mutation2] = "C"
+  frame_selector = rand((protein_sequence.length - 1))
+  nucleotide_selector = rand(2)
+  mutation_replacement = rand(3)
+  if mutation_replacement == 0
+    protein_sequence[frame_selector][nucleotide_selector] = "A"
+  elsif mutation_replacement == 1
+    protein_sequence[frame_selector][nucleotide_selector] = "U"
+  elsif mutation_replacement == 2
+    protein_sequence[frame_selector][nucleotide_selector] = "G"
+  elsif mutation_replacement == 3
+    protein_sequence[frame_selector][nucleotide_selector] = "C"
   end
-  return protein_sequence.flatten.join
+  return protein_sequence.flatten
 end
-
-p mutated_mrna = point_mutation(amino_acid_codons)
+new_mutated_mrna = point_mutation(amino_acid_codons)
+puts "Mutated: #{point_mutation(amino_acid_codons)}"
+puts "Mutated bases: #{mutated_mrna = point_mutation(amino_acid_codons).join}"
+end
